@@ -140,7 +140,7 @@
     });
   }
 
-  // used for randomization and raduis
+  // used for randomization and radius
   function randSize() {
     return Math.floor(Math.random() * (Math.floor(90) - Math.ceil(10)) + Math.ceil(10));
   }
