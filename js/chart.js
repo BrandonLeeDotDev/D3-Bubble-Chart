@@ -157,7 +157,7 @@
 
   let iteration_count = 35;
 
-  function run() {
+  function build_modify_JSON() {
     if (!first_iteration_complete) {
       for (let i = 0; i < iteration_count; i++) {
         const things = ['Impressive Stat', 'Im a Bubble!', 'Certainly', "Yep!", "Metric", "Wordzz"];
@@ -203,8 +203,8 @@
     render();
   }
 
-  run();
+  build_modify_JSON();
 
   setInterval(function() {
-    run();
+    build_modify_JSON();
   }, 3000);
