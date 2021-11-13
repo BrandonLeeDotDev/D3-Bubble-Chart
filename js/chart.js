@@ -52,7 +52,7 @@
   const moveTooltip = (event, d) => {
     tooltip
       .style("left", (event.pageX) + 25 + "px")
-      .style("top", (event.pageY - width) + 25 + "px");
+      .style("top", (event.pageY - width) + 7 + "px");
   }
 
   const hideTooltip = (event, d) => {
@@ -70,8 +70,8 @@
     tooltip
       .style("opacity", 1)
       .html("Info: " + d.name)
-      .style("left", (event.pageX) + 20 + "px")
-      .style("top", (event.pageY - width + 20) + "px");
+      .style("left", (event.pageX) + 25 + "px")
+      .style("top", (event.pageY - width + 7) + "px");
   }
 
   var nodes = [];
