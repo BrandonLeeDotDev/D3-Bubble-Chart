@@ -7,7 +7,7 @@
     width = 560 - margin.left - margin.right,
     height = 460 - margin.top - margin.bottom;
 
-  const svg = d3.select("#my_dataviz")
+  const svg = d3.select("#data")
     .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
@@ -38,7 +38,7 @@
     .range(["green", "orange", "red"]);
 
 
-  var tooltip = d3.select("#my_tool")
+  var tooltip = d3.select("#tooltip")
     .append("div")
     .style("opacity", 0)
     .attr("class", "tooltip")
