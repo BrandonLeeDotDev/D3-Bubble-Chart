@@ -7,7 +7,7 @@
     width = 560 - margin.left - margin.right,
     height = 460 - margin.top - margin.bottom;
 
-  const svg = d3.select("#data")
+  const svg = d3.select("#chart")
     .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
