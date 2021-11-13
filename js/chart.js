@@ -1,11 +1,11 @@
   const margin = {
-      top: 10,
+      top: 20,
       right: 20,
       bottom: 30,
       left: 50
     },
     width = 560 - margin.left - margin.right,
-    height = 450 - margin.top - margin.bottom;
+    height = 460 - margin.top - margin.bottom;
 
   const svg = d3.select("#my_dataviz")
     .append("svg")
@@ -14,7 +14,7 @@
     .append("g")
     .attr("transform", `translate(${margin.left},${margin.top})`);
 
-  const x = d3.scaleLinear()
+  var x = d3.scaleLinear()
     .domain([0, 1300])
     .range([0, width - 20]);
 
@@ -22,18 +22,23 @@
     .attr("transform", `translate(0, ${height})`)
     .call(d3.axisBottom(x));
 
-  const y = d3.scaleLinear()
+  var y = d3.scaleLinear()
     .domain([35, 90])
     .range([height, 0]);
 
   svg.append("g")
     .call(d3.axisLeft(y));
 
-  const z = d3.scaleLinear()
+  var z = d3.scaleLinear()
     .domain([10, 100])
     .range([10, 40]);
 
-  const tooltip = d3.select("#my_tool")
+  var color = d3.scaleLinear()
+    .domain([0, 1, 3])
+    .range(["green", "orange", "red"]);
+
+
+  var tooltip = d3.select("#my_tool")
     .append("div")
     .style("opacity", 0)
     .attr("class", "tooltip")
@@ -68,10 +73,6 @@
       .style("left", (event.pageX) + 20 + "px")
       .style("top", (event.pageY - width + 20) + "px");
   }
-
-  var color = d3.scaleLinear()
-    .domain([0, 1, 3])
-    .range(["green", "orange", "red"]);
 
   var nodes = [];
 
@@ -139,8 +140,9 @@
     });
   }
 
+  // used for randomization and raduis
   function randSize() {
-    return Math.floor(Math.random() * (Math.floor(95) - Math.ceil(4)) + Math.ceil(4));
+    return Math.floor(Math.random() * (Math.floor(90) - Math.ceil(10)) + Math.ceil(10));
   }
 
   function randX() {
@@ -158,9 +160,9 @@
   function run() {
     if (!first_iteration_complete) {
       for (let i = 0; i < iteration_count; i++) {
-        var things = ['Impressive Stat', 'Im a Bubble!', 'Certainly', "Yep!", "Metric", "Wordzz"];
+        const things = ['Impressive Stat', 'Im a Bubble!', 'Certainly', "Yep!", "Metric", "Wordzz"];
 
-        var thing = things[Math.floor(Math.random() * things.length)];
+        const thing = things[Math.floor(Math.random() * things.length)];
 
         if (i % 3 == 0) {
           nodes.push({
@@ -174,8 +176,8 @@
           nodes.push({
             id: "node" + i,
             name: thing,
-            x_axis: x((i * 32 + 120 + (randSize() / 10))),
-            y_axis: y(((i + (iteration_count / 30)) + 36) + (randSize() / 5)),
+            x_axis: x((i * 33 + 120 + (randSize() / 10))),
+            y_axis: y(((i + (iteration_count / 30)) + 35) + (randSize() / 5)),
             radius: z(randSize())
           });
         }
