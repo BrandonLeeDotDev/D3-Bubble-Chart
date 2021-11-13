@@ -117,7 +117,7 @@
         simulation.force(
           'link',
           d3.forceLink(links).strength(1).distance(100)
-        ).alpha(.5);
+        ).alpha(.4);
         circle.raise().attr("cx", d.x = event.x).attr("cy", d.y = event.y);
       }
 
