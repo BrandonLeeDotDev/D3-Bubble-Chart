@@ -149,14 +149,16 @@ function render() {
     .attr("y", 6)
     .attr("dy", ".75em")
     .attr("transform", "rotate(-90)")
-    .text("axisY Label (numbers)");
+    .text("axisY Label (numbers)")
+    .attr("font-size", 13);
 
   svg.append("text")
     .attr("class", "x_label")
     .attr("text-anchor", "end")
     .attr("x", width - 20)
     .attr("y", height - 6)
-    .text("axisX Label (larger numebrs)");
+    .text("axisX Label (larger numebrs)")
+    .attr("font-size", 13);
 
 }
 
