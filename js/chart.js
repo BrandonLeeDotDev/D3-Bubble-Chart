@@ -7,6 +7,14 @@ const margin = {
   width = 560 - margin.left - margin.right,
   height = 460 - margin.top - margin.bottom;
 
+const axisXmaxLen = 1300;
+
+const axisYmaxLen = 90;
+const axisYminlen = 35;
+
+const radiusMax = 36;
+const radiusMin = 3;
+
 const svg = d3.select("#chart")
   .append("svg")
   .attr("width", width + margin.left + margin.right)
@@ -15,7 +23,7 @@ const svg = d3.select("#chart")
   .attr("transform", `translate(${margin.left},${margin.top})`);
 
 const x = d3.scaleLinear()
-  .domain([0, 1300])
+  .domain([0, axisXmaxLen])
   .range([0, width - 20]);
 
 svg.append("g")
@@ -23,7 +31,7 @@ svg.append("g")
   .call(d3.axisBottom(x));
 
 const y = d3.scaleLinear()
-  .domain([35, 90])
+  .domain([axisYminlen, axisYmaxLen])
   .range([height, 0]);
 
 svg.append("g")
@@ -31,7 +39,7 @@ svg.append("g")
 
 const z = d3.scaleLinear()
   .domain([0, 100])
-  .range([3, 36]);
+  .range([radiusMin, radiusMax]);
 
 const color = d3.scaleLinear()
   .domain([0, 1, 3])
@@ -122,7 +130,7 @@ function render() {
         ).alpha(.4)
         .force('x', d3.forceX(node.x_axis).strength(0))
         .force('y', d3.forceY(node.y_axis).strength(0));
-        
+
       circle.raise().attr("cx", node.x = event.x).attr("cy", node.y = event.y);
     }
 
@@ -130,7 +138,7 @@ function render() {
       simulation
         .force('x', d3.forceX(node => node.x_axis).strength(1))
         .force('y', d3.forceY(node => node.y_axis).strength(1));
-        
+
       circle.classed("dragging", false);
     }
   }
@@ -170,7 +178,7 @@ function randSize() {
 }
 
 function randX() {
-  return Math.floor(Math.random() * (Math.floor(1100) - Math.ceil(130)) + Math.ceil(130));
+  return Math.floor(Math.random() * (Math.floor(1000) - Math.ceil(130)) + Math.ceil(130));
 }
 
 function randY() {
@@ -179,7 +187,7 @@ function randY() {
 
 let first_iteration_complete = false;
 
-const iteration_count = 35;
+const iteration_count = 450;
 
 function build_modify_JSON() {
   if (!first_iteration_complete) {
@@ -197,11 +205,15 @@ function build_modify_JSON() {
           radius: z(randSize())
         });
       } else {
+        const xBuffer = 120;
+
+        const yBuffer = 40;
+
         nodes.push({
           id: "node" + i,
           name: thing,
-          x_axis: x((i * 33 + 120 + (randSize() / 10))),
-          y_axis: y(((i + (iteration_count / 30)) + 40) + (randSize() / 5)),
+          x_axis: x((i + 1) * ((axisXmaxLen - (xBuffer + 25)) / iteration_count) + xBuffer + (randSize() / 10)),
+          y_axis: y(i * ((50 - 13) / iteration_count) + yBuffer + (randSize() / 10)),
           radius: z(randSize())
         });
       }
