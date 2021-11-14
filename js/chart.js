@@ -160,7 +160,6 @@ function render() {
     .attr("y", 6)
     .attr("dy", ".75em")
     .attr("transform", "rotate(-90)")
-    .attr("font-size", "smaller")
     .text("axisY Label (numbers)")
     .attr("font-size", 13);
 
