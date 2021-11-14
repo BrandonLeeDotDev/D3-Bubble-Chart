@@ -47,7 +47,7 @@ const tooltip = d3.select("#tooltip")
   .style("padding", "10px")
   .style("color", "white")
   .style("width", "max-content")
-  .style("position", "relative")
+  .style("position", "relative");
 
 const moveTooltip = (event) => {
   tooltip
@@ -59,7 +59,7 @@ const hideTooltip = (event) => {
   tooltip
     .transition()
     .duration(200)
-    .style("opacity", 0)
+    .style("opacity", 0);
 }
 
 const showTooltip = (event, node) => {
@@ -108,7 +108,7 @@ function render() {
 
   const simulation = d3.forceSimulation(nodes)
     .force('x', d3.forceX(node => node.x_axis).strength(.1))
-    .force('y', d3.forceY(node => node.y_axis).strength(.1))
+    .force('y', d3.forceY(node => node.y_axis).strength(.1));
 
   function started(event) {
     const circle = d3.select(this).classed("dragging", true);
@@ -122,14 +122,16 @@ function render() {
         ).alpha(.4)
         .force('x', d3.forceX(node.x_axis).strength(0))
         .force('y', d3.forceY(node.y_axis).strength(0));
+        
       circle.raise().attr("cx", node.x = event.x).attr("cy", node.y = event.y);
     }
 
     function ended() {
       simulation
         .force('x', d3.forceX(node => node.x_axis).strength(1))
-        .force('y', d3.forceY(node => node.y_axis).strength(1))
-      circle.classed("dragging", false)
+        .force('y', d3.forceY(node => node.y_axis).strength(1));
+        
+      circle.classed("dragging", false);
     }
   }
 
@@ -151,8 +153,7 @@ function render() {
     .attr("transform", "rotate(-90)")
     .attr("font-size", "smaller")
     .text("axisY Label (numbers)")
-    .attr("font-size", 13)
-    //.attr("font-weight", "bold")
+    .attr("font-size", 13);
 
   svg.append("text")
     .attr("class", "x_label")
@@ -160,8 +161,7 @@ function render() {
     .attr("x", width - 20)
     .attr("y", height - 6)
     .text("axisX Label (larger numebrs)")
-    .attr("font-size", 13)
-    //.attr("font-weight", "bold");
+    .attr("font-size", 13);
 
 }
 
