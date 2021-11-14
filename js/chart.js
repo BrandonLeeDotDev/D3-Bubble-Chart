@@ -61,7 +61,7 @@ const tooltip = d3.select("#tooltip")
 const moveTooltip = (event) => {
   tooltip
     .style("left", (event.pageX) + 25 + "px")
-    .style("top", (event.pageY - width) + 7 + "px");
+    .style("top", (event.pageY - width + 7) + "px");
 }
 
 const hideTooltip = (event) => {
