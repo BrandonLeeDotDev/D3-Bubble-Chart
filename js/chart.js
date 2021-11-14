@@ -14,7 +14,7 @@ const svg = d3.select("#chart")
   .append("g")
   .attr("transform", `translate(${margin.left},${margin.top})`);
 
-var x = d3.scaleLinear()
+const x = d3.scaleLinear()
   .domain([0, 1300])
   .range([0, width - 20]);
 
@@ -22,23 +22,23 @@ svg.append("g")
   .attr("transform", `translate(0, ${height})`)
   .call(d3.axisBottom(x));
 
-var y = d3.scaleLinear()
+const y = d3.scaleLinear()
   .domain([35, 90])
   .range([height, 0]);
 
 svg.append("g")
   .call(d3.axisLeft(y));
 
-var z = d3.scaleLinear()
+const z = d3.scaleLinear()
   .domain([0, 100])
-  .range([3, 40]);
+  .range([3, 36]);
 
-var color = d3.scaleLinear()
+const color = d3.scaleLinear()
   .domain([0, 1, 3])
   .range(["green", "orange", "red"]);
 
 
-var tooltip = d3.select("#tooltip")
+const tooltip = d3.select("#tooltip")
   .append("div")
   .style("opacity", 0)
   .attr("class", "tooltip")
@@ -149,8 +149,10 @@ function render() {
     .attr("y", 6)
     .attr("dy", ".75em")
     .attr("transform", "rotate(-90)")
+    .attr("font-size", "smaller")
     .text("axisY Label (numbers)")
-    .attr("font-size", 13);
+    .attr("font-size", 13)
+    //.attr("font-weight", "bold")
 
   svg.append("text")
     .attr("class", "x_label")
@@ -158,12 +160,13 @@ function render() {
     .attr("x", width - 20)
     .attr("y", height - 6)
     .text("axisX Label (larger numebrs)")
-    .attr("font-size", 13);
+    .attr("font-size", 13)
+    //.attr("font-weight", "bold");
 
 }
 
 function randSize() {
-  return Math.floor(Math.random() * (Math.floor(90) - Math.ceil(0)) + Math.ceil(0));
+  return Math.floor(Math.random() * (Math.floor(100) - Math.ceil(0)) + Math.ceil(0));
 }
 
 function randX() {
@@ -174,9 +177,9 @@ function randY() {
   return Math.floor(Math.random() * (Math.floor(77) - Math.ceil(47)) + Math.ceil(47));
 }
 
-var first_iteration_complete = false;
+let first_iteration_complete = false;
 
-let iteration_count = 35;
+const iteration_count = 35;
 
 function build_modify_JSON() {
   if (!first_iteration_complete) {
