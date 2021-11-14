@@ -187,7 +187,7 @@ function randY() {
 
 let first_iteration_complete = false;
 
-const iteration_count = 450;
+const iteration_count = 45;
 
 function build_modify_JSON() {
   if (!first_iteration_complete) {
