@@ -14,21 +14,6 @@ const svg = d3.select("#chart")
   .append("g")
   .attr("transform", `translate(${margin.left},${margin.top})`);
 
-svg.append("text")
-  .attr("class", "y_label")
-  .attr("text-anchor", "end")
-  .attr("y", 6)
-  .attr("dy", ".75em")
-  .attr("transform", "rotate(-90)")
-  .text("axisY Label (numbers)");
-
-svg.append("text")
-  .attr("class", "x_label")
-  .attr("text-anchor", "end")
-  .attr("x", width - 20)
-  .attr("y", height - 6)
-  .text("axisX Label (larger numebrs)");
-
 var x = d3.scaleLinear()
   .domain([0, 1300])
   .range([0, width - 20]);
@@ -96,6 +81,8 @@ var links = [];
 function render() {
   d3.selectAll('.nodes').remove();
   d3.selectAll('.lines').remove();
+  d3.selectAll('.y_label').remove();
+  d3.selectAll('.x_label').remove();
 
   const lines = svg
     .selectAll('line')
@@ -155,6 +142,22 @@ function render() {
       .attr('x2', link => link.target.x)
       .attr('y2', link => link.target.y);
   });
+
+  svg.append("text")
+    .attr("class", "y_label")
+    .attr("text-anchor", "end")
+    .attr("y", 6)
+    .attr("dy", ".75em")
+    .attr("transform", "rotate(-90)")
+    .text("axisY Label (numbers)");
+
+  svg.append("text")
+    .attr("class", "x_label")
+    .attr("text-anchor", "end")
+    .attr("x", width - 20)
+    .attr("y", height - 6)
+    .text("axisX Label (larger numebrs)");
+
 }
 
 function randSize() {
