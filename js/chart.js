@@ -1,8 +1,5 @@
 const nodes_to_create = 65;
 
-// set color to scale with width of chart
-// set X,Y buffers to scale with width of chart
-
 const axisXmaxLen = 1300;
 
 const axisYmaxLen = 90;
