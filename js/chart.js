@@ -213,7 +213,7 @@ function build_modify_JSON() {
           id: "node" + i,
           name: thing,
           x_axis: x(i * ((axisXmaxLen - (xBuffer + (radiusMax - radiusMin) / 2)) / iteration_count) + xBuffer + (randSize() / 10)),
-          y_axis: y(i * ((axisYmaxLen - ((yBuffer - 5) + (radiusMax - radiusMin) / 2)) / iteration_count) + yBuffer + (randSize() / 10)),
+          y_axis: y(i * ((axisYmaxLen - (axisYminlen + (radiusMax - radiusMin) / 2)) / iteration_count) + yBuffer + (randSize() / 10)),
           radius: z(randSize())
         });
       }
