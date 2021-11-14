@@ -177,8 +177,6 @@ const xBuffer =  120;
 
 const yBuffer = 40;
 
-console.log(xBuffer)
-
 function randSize() {
   return Math.floor(Math.random() * (Math.floor(100) - Math.ceil(0)) + Math.ceil(0));
 }
