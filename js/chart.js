@@ -201,16 +201,13 @@ function build_modify_JSON() {
           id: "node" + i,
           name: thing,
           x_axis: x((i * 33 + 120 + (randSize() / 10))),
-          y_axis: y(((i + (iteration_count / 30)) + 35) + (randSize() / 5)),
+          y_axis: y(((i + (iteration_count / 30)) + 40) + (randSize() / 5)),
           radius: z(randSize())
         });
       }
     }
 
-    for (let i = 1; i < iteration_count; i++) {
-      if (i == iteration_count - 1) {
-        break;
-      }
+    for (let i = 0; i < iteration_count - 1; i++) {
       links.push({
         source: nodes[i],
         target: nodes[i + 1]
