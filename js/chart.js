@@ -30,8 +30,8 @@ svg.append("g")
   .call(d3.axisLeft(y));
 
 var z = d3.scaleLinear()
-  .domain([10, 100])
-  .range([10, 40]);
+  .domain([0, 100])
+  .range([3, 40]);
 
 var color = d3.scaleLinear()
   .domain([0, 1, 3])
@@ -161,7 +161,7 @@ function render() {
 }
 
 function randSize() {
-  return Math.floor(Math.random() * (Math.floor(90) - Math.ceil(10)) + Math.ceil(10));
+  return Math.floor(Math.random() * (Math.floor(90) - Math.ceil(0)) + Math.ceil(0));
 }
 
 function randX() {
