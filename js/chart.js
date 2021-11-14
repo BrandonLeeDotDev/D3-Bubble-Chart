@@ -47,7 +47,6 @@ const color = d3.scaleLinear()
   .domain([0, 1, 3])
   .range(["green", "orange", "red"]);
 
-
 const tooltip = d3.select("#tooltip")
   .append("div")
   .style("opacity", 0)
