@@ -125,7 +125,7 @@ function render() {
       circle.raise().attr("cx", node.x = event.x).attr("cy", node.y = event.y);
     }
 
-    function ended(event) {
+    function ended() {
       simulation
         .force('x', d3.forceX(node => node.x_axis).strength(1))
         .force('y', d3.forceY(node => node.y_axis).strength(1))
