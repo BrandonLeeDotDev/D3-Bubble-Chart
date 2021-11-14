@@ -212,7 +212,7 @@ function build_modify_JSON() {
         nodes.push({
           id: "node" + i,
           name: thing,
-          x_axis: x((i + 1) * ((axisXmaxLen - (xBuffer + 25)) / iteration_count) + xBuffer + (randSize() / 10)),
+          x_axis: x(i * ((axisXmaxLen - (xBuffer + 25)) / iteration_count) + xBuffer + (randSize() / 10)),
           y_axis: y(i * ((50 - 13) / iteration_count) + yBuffer + (randSize() / 10)),
           radius: z(randSize())
         });
