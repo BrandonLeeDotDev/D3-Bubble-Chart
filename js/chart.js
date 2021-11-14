@@ -196,7 +196,7 @@ function build_modify_JSON() {
 
       const thing = things[Math.floor(Math.random() * things.length)];
 
-      if (i % 3 == 0) {
+      if (i % 2 == 0) {
         nodes.push({
           id: "node" + i,
           name: thing,
