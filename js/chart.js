@@ -1,3 +1,5 @@
+const nodes_to_create = 65;
+
 const margin = {
     top: 20,
     right: 20,
@@ -115,8 +117,8 @@ function render() {
     .call(d3.drag().on("start", started));
 
   const simulation = d3.forceSimulation(nodes)
-    .force('x', d3.forceX(node => node.x_axis).strength(.1))
-    .force('y', d3.forceY(node => node.y_axis).strength(.1));
+    .force('x', d3.forceX(node => node.x_axis).strength(.2))
+    .force('y', d3.forceY(node => node.y_axis).strength(.2));
 
   function started(event) {
     const circle = d3.select(this).classed("dragging", true);
@@ -187,11 +189,9 @@ function randY() {
 
 let first_iteration_complete = false;
 
-const iteration_count = 65;
-
 function build_modify_JSON() {
   if (!first_iteration_complete) {
-    for (let i = 0; i < iteration_count; i++) {
+    for (let i = 0; i < nodes_to_create; i++) {
       const things = ['Impressive Stat', 'Im a Bubble!', 'Certainly', "Yep!", "Metric", "Wordzz"];
 
       const thing = things[Math.floor(Math.random() * things.length)];
@@ -209,17 +209,17 @@ function build_modify_JSON() {
 
         const yBuffer = 40;
 
-       nodes.push({
+        nodes.push({
           id: "node" + i,
           name: thing,
-          x_axis: x(i * ((axisXmaxLen - (xBuffer + radiusMax / 2)) / iteration_count) + xBuffer + (randSize() / 10)),
-          y_axis: y(i * ((axisYmaxLen - (axisYminlen + radiusMax / 2)) / iteration_count) + yBuffer + (randSize() / 10)),
+          x_axis: x(i * ((axisXmaxLen - (xBuffer + (radiusMax - radiusMin) / 2)) / nodes_to_create) + xBuffer + (randSize() / 10)),
+          y_axis: y(i * ((axisYmaxLen - (axisYminlen + (radiusMax - radiusMin) / 2)) / nodes_to_create) + yBuffer + (randSize() / 10)),
           radius: z(randSize())
         });
       }
     }
 
-    for (let i = 0; i < iteration_count - 1; i++) {
+    for (let i = 0; i < nodes_to_create - 1; i++) {
       links.push({
         source: nodes[i],
         target: nodes[i + 1]
@@ -228,7 +228,7 @@ function build_modify_JSON() {
 
     first_iteration_complete = true;
   } else {
-    for (let i = 0; i < iteration_count; i++) {
+    for (let i = 0; i < nodes_to_create; i++) {
       nodes[i].radius = z(randSize());
     }
   }
