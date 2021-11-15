@@ -60,8 +60,8 @@ const tooltip = d3.select("#tooltip")
 
 const moveTooltip = (event) => {
   tooltip
-    .style("left", (event.pageX) + 25 + "px")
-    .style("top", (event.pageY - width + 7) + "px");
+        .style("left", (event.pageX) + 25 + "px")
+        .style("top", (event.pageY - height - 75) + "px");
 }
 
 const hideTooltip = (event) => {
@@ -79,8 +79,8 @@ const showTooltip = (event, node) => {
   tooltip
     .style("opacity", 1)
     .html("Info: " + node.name)
-    .style("left", (event.pageX) + 25 + "px")
-    .style("top", (event.pageY - width + 7) + "px");
+        .style("left", (event.pageX) + 25 + "px")
+        .style("top", (event.pageY - height - 75) + "px");
 }
 
 var nodes = [];
